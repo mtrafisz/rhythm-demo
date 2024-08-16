@@ -6,14 +6,14 @@ execute_process(COMMAND git submodule init
 
 set (BUILD_EXAMPLES OFF CACHE STRING "" FORCE)
 add_subdirectory (third-party/raylib)
-add_library (array STATIC third-party/carr/car.c)
+add_library (array STATIC utils/carr/car.c)
 
 file (GLOB_RECURSE LOCAL_SOURCES "src/*.c")
 add_executable (${PROJECT_NAME} ${LOCAL_SOURCES})
 
 target_include_directories(${PROJECT_NAME} PRIVATE
     "third-party/raylib/src"
-    "third-party/carr"
+    "utils/carr"
 )
 
 if (NOT WIN32)
